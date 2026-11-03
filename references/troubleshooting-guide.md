@@ -314,32 +314,46 @@ reactFlowInstance.onNodesChange([{
 
 ---
 
-## 避坑 13：开口容器液体超限反重力悬浮（以竹筒茶水水位高于侧面溢流切口为例）
+## 避坑 13：开口容器反重力悬浮与“出水口高于茶桶”结构畸变（以竹筒茶桶平口正立流体力学规范为例）
 
 ### 13.1 故障现场
-在《少年变形记》第三集 SC9 镜头中，陈阿福手持一截带有侧面斜切饮用口（缺口）的翠绿竹筒大红袍茶，但竹筒内的琥珀色茶水水位明显高出该侧面开口缺口的最低凹槽边缘，且茶水没有向外溢出，仿佛有一层隐形透明玻璃强行阻挡，严重违反连通器与重力流体静力学物理常识。
+在《少年变形记》第三集 SC9 镜头（阿福神茶推销反转）中，出现两处严重的流体物理与容器结构设计硬伤：
+1. **初版缺陷：液面反重力悬浮**：陈阿福手持一截带有侧面斜切饮用口（缺口）的竹筒，竹筒内的琥珀色茶水水位明显高出该侧面开口缺口的最低凹槽边缘，且茶水没有向外溢出，严重违反连通器与重力流体静力学常识；
+2. **次生结构畸变：“茶水出口高于茶桶”**：在试图修正斜切缺口时，若简单使用 `beveled notch`，扩散模型常将竹筒顶部渲染为左高右低的畸形倾斜结构，左侧高耸尖角形似“出水嘴/倒水出口”，但其物理高度突兀且荒谬地**显著高出茶桶储水主体**；倒水与饮用逻辑严重倒挂，在物理上无法依靠重力自流，在人体工学上更是无法合理倾倒；
+3. **伴随方向倒置**：模型极易误判朝向，将竹筒上下颠倒（杯口朝下当成杯底），导致液体出现在杯底反向倒悬。
 
 ### 13.2 根因剖析
-1. **“装满”等泛化量词与复杂容器开孔几何冲突（Semantic Volume Clashing with Vessel Topology）**：
-   在提示词中使用“装满冰镇大红袍茶的翠绿竹筒”，扩散模型在理解“装满（filled to the brim）”时，将其映射为将柱状容器容积填充至最高物理截面（100% Volume），却忽视了侧面开口/溢流缺口（Overflow notch / Beveled opening）对液面几何上限的拓扑截断作用。
-2. **缺乏流体等势面与重力约束（Absence of Hydrostatic Gravitational Bounds）**：
-   扩散模型本身不具备内置的流体动力学求解器（Navier-Stokes Solver）。当模型绘制透明/半透明液体（如茶水、果汁、酒水）时，如果未显式规定液体自由液面相对于容器各开孔的标高空间关系，模型会随机出现“反重力液面直立”或“悬浮液壁（Liquid Wall）”。
+1. **非对称开口（Beveled Notch）诱发模型对“假出水嘴”的几何畸变**：
+   扩散模型在解析“斜切饮用口”或“出水凹槽”时，由于缺乏刚体几何约束，倾向于将较高的单侧边缘渲染成茶壶嘴或高烟囱式突起，导致视觉呈现出“出水嘴/茶水出口高于茶桶本身”的违背常理的设计。
+2. **“装满”泛化量词与流体等势面缺失**：
+   在提示词中使用“装满冰镇大红袍茶”，模型默认填充至最高像素截面，忽视了重力自由表面法则；缺少流体动力学约束时，液体在开孔处无法形成平整沉降的物理弯月面（Meniscus）。
+3. **缺乏正立姿态与持握展示语义约束**：
+   未明确约定竹筒朝向与持握动作时，模型易将手部动作误判为“将杯子扣在嘴上饮水”，不仅遮挡角色面部影响口型对白，更会触发杯体颠倒（Inverted Cup）的严重视觉 Bug。
 
 ### 13.3 工业级终极解决方案
-**「流体静力学标高约束协议 (Hydrostatic Headspace Protocol)」**：
-1. **显式量化标高：液面必须低于开口最低凹缘（Strict Negative Headspace）**：
-   摒弃“装满”等极端词，精准量化液面与开口的相对空间坐标：
+**「齐口柱面流体静力学与正立容器规范 (Flush-Rim Upright Hydrostatics Protocol)」**：
+1. **容器对称平齐锁死（Symmetric Flush-Rim Architecture）**：
+   彻底摒弃 `beveled`、`notch`、`cutout`、`pointed tip` 等容易诱发畸变出水嘴的非对称词。显式约束为武夷山天然直立平切圆柱竹筒杯：
    ```text
-   (The clear amber-golden tea liquid level is strictly and visibly settled 2-3 centimeters BELOW the lowest rim of the overflow cutout notch, adhering strictly to gravity and fluid mechanics, with natural horizontal liquid meniscus and floating clear ice cubes, no liquid standing above the cutout, no overflowing).
+   (Authentic upright bamboo canister architecture): the cup is held vertically upright;
+   the flat, smooth horizontal circular open rim is strictly at the TOP pointing up to the sky with equal height on all sides;
+   the solid sealed bamboo node base is strictly at the BOTTOM pointing down.
    ```
-2. **负向封锁反重力悬浮液面（Anti-Gravity Fluid Locks）**：
-   负向提示词加装针对性物理规则拦截：
+2. **流体静力学平稳沉降（Hydrostatic Meniscus Headspace）**：
+   精准量化茶汤水平面沉降在齐平杯口下方 2~3 cm 安全高度：
    ```text
-   liquid above opening, water level higher than cutout, defying gravity, floating water,
-   liquid wall, water outside container, unnatural fluid level, overflow glitch
+   (Inside the cup, clear amber-golden iced Dahongpao tea liquid level settles 2 to 3 cm below the top open rim,
+   forming a natural horizontal liquid meniscus with floating ice cubes and frosty mist, completely realistic gravity-obeying container with zero overflow).
    ```
-3. **物理质感增强补偿**：
-   通过描摹物理弯月面（Meniscus）、漂浮冰块（Floating ice cubes）以及外壁冷凝水珠（Condensation droplets），引导扩散模型将注意力和局部算力聚焦于逼真的容器外壁与物理合理的液面交互上。
+3. **持握展示动作与面部零遮挡保护（Showcase Staging & Zero Face Occlusion）**：
+   显式指令角色正立端握竹筒并向镜头轻微展示晃动，严格禁止饮水动作，手部与容器低于胸口高度，确保角色面部 100% 完整露出，口型与神态生动无阻碍。
+4. **硬负向封锁异形出水口与颠倒词元（Hard Negative Structural Locks）**：
+   ```text
+   spout higher than barrel, high spout, pointed spout, spout above container, funnel above rim,
+   crooked rim, asymmetrical slanted opening, beveled edge, pointed tip, unnatural nozzle, high faucet,
+   protruding outlet, inverted cup, upside down cup, drinking, cup covering mouth, cup touching lips
+   ```
+- **实战成效**：重拍后的 SC9 镜头（节点 `v-1VtgOk28JE`）中，陈阿福手持规整端正、四壁平齐的天然翠绿竹筒，琥珀色大红袍冰茶与冰块平稳置于杯口下方，清爽冷雾升腾，外壁凝结晶莹冰凉水珠，彻底根除了“出水口高于茶桶”的结构倒错与悬浮 bug，阿福阳光满溢地大张嘴生动叫卖推销，零字幕纯净成片完美交付！
 
 ---
 
