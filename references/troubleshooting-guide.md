@@ -465,4 +465,61 @@ reactFlowInstance.onNodesChange([{
    ```
 - **实战成效**：重拍后的 SC4 镜头中，王一鸣从眉目含笑的自恋大少爷，到看到断网时面容迟疑蹙眉发呆，再到抱头仰天狂啸，肌肉运动层次分明、心理节奏真实饱满，完美演绎了一段极具喜剧张力且自然可信的“面部表情弧线”！
 
+---
+
+## 避坑 16：多主体长镜头潜变量注意力漂移导致中途人物突变与隐现变装
+
+### 16.1 故障现场
+在《少年变形记》第四集 SC01 镜头（溪谷进军）中：
+1. 视频前 4 秒：领队阿福（草帽、绿工装）身后紧随赵铁柱（红色背心、蓝格子衫）与王一鸣（蓝色卫衣）；
+2. 播放至第 4 秒分界点时：后方人物发生断崖式突变——赵铁柱与王一鸣凭空消失，画面怪异地切变为苏小婉（淡紫开衫）以及双胞胎刘中原，服饰造型、配色与角色身份完全割裂。
+
+### 16.2 根因剖析
+1. **多人物参考卡并行引发跨帧注意力竞争（Cross-Attention Contention）**：
+   单镜头同时绑定 5 位主角参考卡时，若提示词缺乏严密的空间队列约束，模型底层注意力机制在前 4.5 秒（第一时序潜变量块）重点生成前 3 位角色，在后 4.5 秒（第二时序块）因“未被充分引用的角色参考卡（如苏小婉）权重反扑”，强行在后半程将其他角色置换生成。
+2. **缺乏空间队形持久性（Spatial Formation Invariance）约束**：
+   原提示词仅用了“follow closely”等模糊动词，没有锁定 5 人恒定的相对空间排布与视线距离。
+
+### 16.3 工业级终极解决方案
+**「持久空间队列锁死协议 (Persistent Formation Lock Protocol)」**：
+1. **显式建立五人前后恒定线性队列（Strictly Persistent Linear Formation）**：
+   ```text
+   (Strictly persistent 5-person linear formation, unbroken character visual identity continuity across all 9 seconds, zero character swapping or morphing before and after 4 seconds):
+   Forefront: Chen Afu in green shirt, straw hat leading.
+   Behind left: burly Zhao Tiezhu in red tank top, blue flannel, black pants.
+   Behind right: Wang Yiming in bright royal blue hoodie and black track pants.
+   Rear: Liu Zhongyuan in earth-tan khaki shirt walking beside Su Xiaowan in pastel blouse.
+   All five teenagers maintain their exact individual clothing, hairstyles, facial features, and relative walking positions consistently from second 0 to second 9 without any change.
+   ```
+2. **负向词全方位封死变装与身份跳变**：
+   ```text
+   character switching, character morphing, character disappearing, vanishing people, sudden person popping in, changing clothes, clothes color change, dress change, mutation, cloned people, duplicate characters, twin characters, identical characters, 4 second glitch, mid-shot costume change, disappearance at 4 seconds
+   ```
+- **实战成效**：重拍后的 EP4-SC01（节点 `v-ZbXI7Mmzto`）中，五人队伍稳步向前涉水行进，4 秒前后造型、服饰配色与细节特征高度一致，彻底消除了“角色凭空变装蒸发”的严重时序缺陷！
+
+---
+
+## 避坑 17：高空大俯拍摄像机位引发多人物面部像素稀释与五官模糊
+
+### 17.1 故障现场
+在《少年变形记》第四集 SC09 镜头（李大娘小院丰收犒劳）中：
+原镜头起始采用高空大俯拍（High angle），前 4 秒镜头居高临下俯瞰整个农家餐桌，导致 5 位围坐主角的面部严重朝下倾斜且成像面积极小，面部特征糊成一片，五官辨识度极低。
+
+### 17.2 根因剖析
+- **潜空间下采样与物理像素网格定律**：
+  在 9:16 竖屏（496×864）画幅中，高空俯拍使餐桌与院落占满全屏，角色面部在画面中被稀释到不足 `20×25` 像素。在扩散模型 Latent Space 经过 8 倍下采样后，面部只剩区区 2~3 个潜变量 Token，数学上完全无法保留眼睛高光、唇部线条与生动微表情。
+
+### 17.3 工业级终极解决方案
+**「平视中景推进协议 (Eye-Level Medium Pushing-in Protocol)」**：
+1. **彻底摒弃远距高空俯拍，改用平视温馨中景推进**：
+   ```text
+   (Eye-level warm medium shot gently pushing in, 9:16 vertical composition), cozy rustic farm cottage courtyard, red clay tiled walls bathed in warm golden sunset glow. (Cinematic sharp focus on all five teenagers' faces from second 0 to second 9, crystal clear facial features, highly detailed expressive eyes, clear smiling lips, perfectly focused facial anatomy across the entire 9 seconds without any blurriness or distance dilution)
+   ```
+2. **负向词库加装面部失焦重型拦截网**：
+   ```text
+   blurry faces, low resolution faces, indistinct facial features, unrecognizable faces, mushy facial details, out of focus faces, soft focus on face, pixelated faces, high angle overhead shot, bird's eye view, distant faces
+   ```
+- **实战成效**：重拍后的 EP4-SC09（节点 `v-AXsXmfoWvt`）从第 0 秒起即为平视围坐中景，暖阳夕照下五位主角的饥饿垂涎、两眼放光与开怀大笑的面容纤毫毕现，五官与微表情立体生动，彻底解决了“前 4 秒面部模糊”的问题！
+
+
 
