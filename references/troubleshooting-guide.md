@@ -497,6 +497,25 @@ reactFlowInstance.onNodesChange([{
    ```
 - **实战成效**：重拍后的 EP4-SC01（节点 `v-ZbXI7Mmzto`）中，五人队伍稳步向前涉水行进，4 秒前后造型、服饰配色与细节特征高度一致，彻底消除了“角色凭空变装蒸发”的严重时序缺陷！
 
+### 16.4 进阶升级：多人物行进景别收敛与 FACS 微表情驱动规范
+- **故障现场**：在全景多人物行进镜头中，即使角色身份与服饰保持统一，但因采用从头到脚的全身远景大构图，角色面部在画面中仅占数十像素，导致面部微表情细节表现不足、五官模糊且神态偏呆滞僵硬。
+- **工业级终极解决方案**：
+  1. **景别收敛为腰部以上半身中景跟随（Waist-up Medium Tracking Shot）**：
+     在 9:16 竖屏构图中，去除无剧情信息的足部与地面乱石，机位上提平推，将五大主角的半身与面部放大 2.5~3 倍，使扩散模型在潜空间获得充沛的 Token 密度渲染五官。
+  2. **显式注入 FACS 面部微表情动作编码（Facial Action Coding System）**：
+     - **陈阿福**：眼轮匝肌收缩形成真笑笑纹（AU6/12）、活泼扬眉、嘴唇自然张大露出洁白牙齿、下颌动态起伏说话；
+     - **王一鸣**：眉心微蹙、下颌大幅下拉打哈欠（AU27）、头部后仰，神态极具喜剧困顿感；
+     - **赵铁柱**：双眉下沉（AU4）、嘴巴诙谐撇嘴饥饿嘟囔；
+     - **苏小婉与刘中原**：清澈眼神高光（Eye Reflections）与灵动嘴角微笑。
+  3. **负向硬锁呆滞面孔与远距微缩**：
+     ```text
+     blurry faces, low resolution faces, indistinct facial features, expressionless faces,
+     blank stare, deadpan face, mannequin expression, robotic face, plastic skin, motionless jaw,
+     static mouth, closed lips talking, stiff face, full body far shot, tiny heads
+     ```
+- **实战成效**：重拍后的 EP4-SC01 半身微表情特化版（节点 `v-GvtzpNJAjD`）不仅严格继承了 4 秒前后的服饰与色彩一致性，而且每位少年的眼角笑意、牙齿细节、哈欠与肌肉动态活灵活现，电影级质感大幅跃升！
+
+
 ---
 
 ## 避坑 17：高空大俯拍摄像机位引发多人物面部像素稀释与五官模糊
