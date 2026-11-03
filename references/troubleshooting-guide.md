@@ -270,45 +270,73 @@ reactFlowInstance.onNodesChange([{
    让主角在画面中占据 50% 以上面积，面部有效像素直接提升 3~5 倍！
 2. **注入高清面部特化描述**：
    `(crystal clear sharp facial features, highly detailed expressive eyes, clear smiling lips naturally parted speaking, cinematic sharp focus on faces, 8k resolution, masterpiece)`。
-273: 3. **负向词强化封杀面部缺陷**：
-274:    `blurry faces, low resolution face, indistinct facial features, unrecognizable face, distorted mouth, mushy details, out of focus`。
-275: 
-276: ---
-277: 
-278: ## 避坑 12：AI 奔跑运动失重滑步与摔跤动作违背人体生物力学的动力学解法
-279: 
-280: ### 12.1 故障现场
-281: 在《少年变形记》第三集 SC10（大结局小院哄抢神茶爆笑追逐戏）中：
-282: 1. 角色奔跑动作呈现轻浮失重感，步伐如同“太空漫步”或“冰面滑行”，双脚踩地缺乏向下的重力压实感与向上的地面反作用力（Ground Reaction Force）物理反馈。
-283: 2. 视频第 3 秒角色的摔跤动作严重违背人体生物力学：角色在失衡时没有重心偏移的生理因果链，肢体反应严重滞后，直接怪异地四肢贴地趴爬（呈非人类爬行动物姿态），完全缺失双手本能撑地缓冲（Protective Extension Reflex）、贴地减速滑行与沙土飞溅的真实碰撞物理质感。
-284: 
-285: ### 12.2 根因剖析
-286: 1. **抽象文学动词导致力学向量缺失（Lack of Biomechanical Vector Tokens）**：
-287:    原提示词使用了“三张大花脸嗷嗷叫着连滚带爬在后面扑倒追赶”等文学短语。扩散模型无法从“连滚带爬”中解析出精确的运动骨骼拓扑，在缺乏显式重力引导时，模型潜特征倾向于调用低能耗的二维平移或静态贴地滑行，导致角色失重与四肢异化。
-288: 2. **缺少生理保护反射机制（Protective Extension Reflex）与重心失稳因果链**：
-289:    人体在高速奔跑中跌倒绝非瞬间趴地，而是经历“支撑面失稳 ➔ 重心（CoG）越出支撑多边形 ➔ 线性动量驱使躯干向前俯冲 ➔ 上肢本能向前弹射撑地缓冲 ➔ 前臂与手掌吸收冲力 ➔ 摩擦力耗散动量”的严谨时序链。缺少这一链条，画面就会呈现怪异的“布偶（Ragdoll）”跌落或“爬虫式贴地爬行”。
-290: 3. **缺乏地面作用力与介质形变反馈（Ground Reaction Force & Soil Deformation）**：
-291:    真实的泥地奔跑必有鞋底对地面的剧烈踩踏、脚踝膝盖的微幅屈曲下沉以及后蹬时鞋底掀起的大片泥土碎屑。缺少这些环境交互描述，角色脚底就会在地面上“悬浮漂移”。
-292: 
-293: ### 12.3 工业级终极解决方案
-294: **「生物力学动力学协议 (Biomechanical Dynamics Protocol)」**：
-295: 1. **注入强物理地面反作用力与重量感词元（Ground Reaction Force & Weight Momentum）**：
-296:    ```text
-297:    (Authentic human athletic running biomechanics and heavy gravity physics):
-298:    sprints frantically forward, torso leaning forward 20 degrees, powerful grounded strides,
-299:    athletic knee drive, heavy foot strikes pounding firmly into the hard dirt ground,
-300:    visible ground reaction force, trailing dust plumes kicking up behind shoe soles.
-301:    ```
-302: 2. **重构摔跤四阶段生理时序链（4-Phase Biomechanical Fall Sequence）**：
-303:    - **失稳诱因（Phase 1）**：`sneakers lose traction on loose dirt and slip, center of gravity fails`
-304:    - **冲力俯冲（Phase 2）**：`body momentum pitches violently forward in a realistic biomechanical trip, upper body plunges forward with natural linear momentum`
-305:    - **本能缓冲（Phase 3）**：`arms instinctively fling forward to absorb the fall with protective arm extension reflex, palms and forearms slamming onto the dirt ground with physical impact`
-306:    - **滑行减速（Phase 4）**：`skidding forward on the dirt to cushion the landing while kicking up a dramatic burst of dust and pebbles, facial grimace with mouth wide open`
-307: 3. **失重与爬行动作重型拦截网（Negative Physical Locks）**：
-308:    ```text
-309:    floaty movement, zero gravity, moonwalk, ice skating feet, sliding without stepping,
-310:    hovering above ground, effortless running, spider crawling, crawling on all fours,
-311:    quadruped crawl, awkward ragdoll, disjointed fall, stiff stumble, delayed impact reaction
-312:    ```
-313: - **实战成效**：重拍后的 SC10 镜头不仅脚步踩踏沉实有力、黄沙翻滚，第 3 秒刘中原扑抢滑跌动作完全符合牛顿力学与人体生理本能，双手撑地缓冲真实饱满，喜剧张力与真实沉浸感成倍提升！
+3. **负向词强化封杀面部缺陷**：
+   `blurry faces, low resolution face, indistinct facial features, unrecognizable face, distorted mouth, mushy details, out of focus`。
 
+---
+
+## 避坑 12：AI 奔跑运动失重滑步与摔跤动作违背人体生物力学的动力学解法
+
+### 12.1 故障现场
+在《少年变形记》第三集 SC10（大结局小院哄抢神茶爆笑追逐戏）中：
+1. 角色奔跑动作呈现轻浮失重感，步伐如同“太空漫步”或“冰面滑行”，双脚踩地缺乏向下的重力压实感与向上的地面反作用力（Ground Reaction Force）物理反馈。
+2. 视频第 3 秒角色的摔跤动作严重违背人体生物力学：角色在失衡时没有重心偏移的生理因果链，肢体反应严重滞后，直接怪异地四肢贴地趴爬（呈非人类爬行动物姿态），完全缺失双手本能撑地缓冲（Protective Extension Reflex）、贴地减速滑行与沙土飞溅的真实碰撞物理质感。
+
+### 12.2 根因剖析
+1. **抽象文学动词导致力学向量缺失（Lack of Biomechanical Vector Tokens）**：
+   原提示词使用了“三张大花脸嗷嗷叫着连滚带爬在后面扑倒追赶”等文学短语。扩散模型无法从“连滚带爬”中解析出精确的运动骨骼拓扑，在缺乏显式重力引导时，模型潜特征倾向于调用低能耗的二维平移或静态贴地滑行，导致角色失重与四肢异化。
+2. **缺少生理保护反射机制（Protective Extension Reflex）与重心失稳因果链**：
+   人体在高速奔跑中跌倒绝非瞬间趴地，而是经历“支撑面失稳 ➔ 重心（CoG）越出支撑多边形 ➔ 线性动量驱使躯干向前俯冲 ➔ 上肢本能向前弹射撑地缓冲 ➔ 前臂与手掌吸收冲力 ➔ 摩擦力耗散动量”的严谨时序链。缺少这一链条，画面就会呈现怪异的“布偶（Ragdoll）”跌落或“爬虫式贴地爬行”。
+3. **缺乏地面作用力与介质形变反馈（Ground Reaction Force & Soil Deformation）**：
+   真实的泥地奔跑必有鞋底对地面的剧烈踩踏、脚踝膝盖的微幅屈曲下沉以及后蹬时鞋底掀起的大片泥土碎屑。缺少这些环境交互描述，角色脚底就会在地面上“悬浮漂移”。
+
+### 12.3 工业级终极解决方案
+**「生物力学动力学协议 (Biomechanical Dynamics Protocol)」**：
+1. **注入强物理地面反作用力与重量感词元（Ground Reaction Force & Weight Momentum）**：
+   ```text
+   (Authentic human athletic running biomechanics and heavy gravity physics):
+   sprints frantically forward, torso leaning forward 20 degrees, powerful grounded strides,
+   athletic knee drive, heavy foot strikes pounding firmly into the hard dirt ground,
+   visible ground reaction force, trailing dust plumes kicking up behind shoe soles.
+   ```
+2. **重构摔跤四阶段生理时序链（4-Phase Biomechanical Fall Sequence）**：
+   - **失稳诱因（Phase 1）**：`sneakers lose traction on loose dirt and slip, center of gravity fails`
+   - **冲力俯冲（Phase 2）**：`body momentum pitches violently forward in a realistic biomechanical trip, upper body plunges forward with natural linear momentum`
+   - **本能缓冲（Phase 3）**：`arms instinctively fling forward to absorb the fall with protective arm extension reflex, palms and forearms slamming onto the dirt ground with physical impact`
+   - **滑行减速（Phase 4）**：`skidding forward on the dirt to cushion the landing while kicking up a dramatic burst of dust and pebbles, facial grimace with mouth wide open`
+3. **失重与爬行动作重型拦截网（Negative Physical Locks）**：
+   ```text
+   floaty movement, zero gravity, moonwalk, ice skating feet, sliding without stepping,
+   hovering above ground, effortless running, spider crawling, crawling on all fours,
+   quadruped crawl, awkward ragdoll, disjointed fall, stiff stumble, delayed impact reaction
+   ```
+- **实战成效**：重拍后的 SC10 镜头不仅脚步踩踏沉实有力、黄沙翻滚，第 3 秒刘中原扑抢滑跌动作完全符合牛顿力学与人体生理本能，双手撑地缓冲真实饱满，喜剧张力与真实沉浸感成倍提升！
+
+---
+
+## 避坑 13：开口容器液体超限反重力悬浮（以竹筒茶水水位高于侧面溢流切口为例）
+
+### 13.1 故障现场
+在《少年变形记》第三集 SC9 镜头中，陈阿福手持一截带有侧面斜切饮用口（缺口）的翠绿竹筒大红袍茶，但竹筒内的琥珀色茶水水位明显高出该侧面开口缺口的最低凹槽边缘，且茶水没有向外溢出，仿佛有一层隐形透明玻璃强行阻挡，严重违反连通器与重力流体静力学物理常识。
+
+### 13.2 根因剖析
+1. **“装满”等泛化量词与复杂容器开孔几何冲突（Semantic Volume Clashing with Vessel Topology）**：
+   在提示词中使用“装满冰镇大红袍茶的翠绿竹筒”，扩散模型在理解“装满（filled to the brim）”时，将其映射为将柱状容器容积填充至最高物理截面（100% Volume），却忽视了侧面开口/溢流缺口（Overflow notch / Beveled opening）对液面几何上限的拓扑截断作用。
+2. **缺乏流体等势面与重力约束（Absence of Hydrostatic Gravitational Bounds）**：
+   扩散模型本身不具备内置的流体动力学求解器（Navier-Stokes Solver）。当模型绘制透明/半透明液体（如茶水、果汁、酒水）时，如果未显式规定液体自由液面相对于容器各开孔的标高空间关系，模型会随机出现“反重力液面直立”或“悬浮液壁（Liquid Wall）”。
+
+### 13.3 工业级终极解决方案
+**「流体静力学标高约束协议 (Hydrostatic Headspace Protocol)」**：
+1. **显式量化标高：液面必须低于开口最低凹缘（Strict Negative Headspace）**：
+   摒弃“装满”等极端词，精准量化液面与开口的相对空间坐标：
+   ```text
+   (The clear amber-golden tea liquid level is strictly and visibly settled 2-3 centimeters BELOW the lowest rim of the overflow cutout notch, adhering strictly to gravity and fluid mechanics, with natural horizontal liquid meniscus and floating clear ice cubes, no liquid standing above the cutout, no overflowing).
+   ```
+2. **负向封锁反重力悬浮液面（Anti-Gravity Fluid Locks）**：
+   负向提示词加装针对性物理规则拦截：
+   ```text
+   liquid above opening, water level higher than cutout, defying gravity, floating water,
+   liquid wall, water outside container, unnatural fluid level, overflow glitch
+   ```
+3. **物理质感增强补偿**：
+   通过描摹物理弯月面（Meniscus）、漂浮冰块（Floating ice cubes）以及外壁冷凝水珠（Condensation droplets），引导扩散模型将注意力和局部算力聚焦于逼真的容器外壁与物理合理的液面交互上。

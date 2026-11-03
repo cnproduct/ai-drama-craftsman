@@ -5,7 +5,7 @@
   "totalShots": 10,
   "totalDurationSeconds": 91,
   "totalDurationFormatted": "1分31秒",
-  "status": "100% 验收通过 (全 10 镜头零字幕 + 高清面部 + 人体生物力学完美版)",
+  "status": "100% 验收通过 (全 10 镜头零字幕 + 高清面部 + 人体生物力学 + 流体物理完美版)",
   "shots": [
     {
       "shotId": "SC1",
@@ -90,12 +90,12 @@
     {
       "shotId": "SC9",
       "title": "阿福神茶降临与商业反转",
-      "nodeId": "v-IkwTNjxRhg",
-      "duration": "9.08s",
+      "nodeId": "v-ZQyeTpE7qf",
+      "duration": "9.09s",
       "ratio": "9:16 (496x864)",
-      "sizeMB": "2.60 MB",
-      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/857cd5bc9448ec082f1fb37d833649f731c32375e0cd0ea60c7a3401d2c0f7b1.mp4",
-      "highlight": "阿福倚在木门门框上摇晃挂满晶莹水珠的冰镇大红袍竹筒茶，得意开合嘴巴奸商推销"
+      "sizeMB": "2.36 MB",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/629b8f7165c66604730ecce29cfe19816b3f6c4864ff68bfa2b238371cc16f82.mp4",
+      "highlight": "【流体力学与结构合理重拍版】严格将琥珀茶水水位约束在竹筒侧面饮用缺口/溢流口最低凹缘以下 2~3cm，彻底解决液面反重力悬浮bug；阿福大张嘴生动推销，零字幕纯净底片！"
     },
     {
       "shotId": "SC10",
