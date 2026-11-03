@@ -340,3 +340,38 @@ reactFlowInstance.onNodesChange([{
    ```
 3. **物理质感增强补偿**：
    通过描摹物理弯月面（Meniscus）、漂浮冰块（Floating ice cubes）以及外壁冷凝水珠（Condensation droplets），引导扩散模型将注意力和局部算力聚焦于逼真的容器外壁与物理合理的液面交互上。
+
+---
+
+## 避坑 14：多主体双场景跳切引发流体介质（烟雾/水汽）时序湮灭与闪现
+
+### 14.1 故障现场
+在《少年变形记》第三集 SC7 镜头（干辣椒入热油冒浓烟）中：
+1. 视频进行到第 6 秒时，黄烟浓度陡增导致角色出现剧烈呛咳反应，但烟雾在第 7 秒随即迅速怪异消散，空气恢复完全透明；
+2. 至第 8 秒时，浓烟又突然再次凭空爆发闪现，伴随特写镜头切换，前后画面衔接极其突兀，缺乏合理的物理过渡与时序逻辑连贯性。
+
+### 14.2 根因剖析
+1. **单镜头多焦点空间跳切（Spatial Jump Cut in a Single Shot）**：
+   原提示词在一个 9 秒镜头中强行糅合了两个相互割裂的空间描述：一是“破旧灶台热锅前刘中原手抖倒辣椒面”，二是“依据参考图王一鸣在院角被烟扑脸双手捂鼻”。扩散模型在生成过程中试图兼顾两个不同人物的不同位置，导致在 6s~7s 强制将机位切往院角的王一鸣，却在机位切换时丢失了发烟源（热铁锅）的空间上下文，直接将空气“去烟化”渲染为透明背景；随后在 8s 又切换回刘中原的大特写，导致浓烟凭空“二次爆燃”。
+2. **缺乏流体介质连续发射与单调累积约束（Lack of Continuous Emission & Monotonic Dispersion Bounds）**：
+   在真实物理世界中，只要热油持续炙烤辣椒，铁锅就是持续发烟源（Continuous Source Emitter），气溶胶微粒受热升腾并向周围空间不可逆地扩散蔓延（Irreversible Atmospheric Dispersion），绝对不可能在 0.5 秒内神秘消失又在 1 秒后瞬间生成。模型缺乏连续气溶胶流体仿真指令。
+
+### 14.3 工业级终极解决方案
+**「连续介质气溶胶扩散协议 (Continuous Aerosol Diffusion Protocol)」**：
+1. **单一连续机位同画幅构图（Single-Take Unified Spatial Staging）**：
+   严禁在单个 9 秒镜头中采用割裂的多机位跳切！改用同画幅中景运镜：前景锁定刘中原手握铁铲呛咳，中景呈现王一鸣在扩散路径上捂鼻躲避，统一时空连续性。
+2. **显式注入持续发烟与单调扩散词元（Continuous Persistent Emitter & Monotonic Accumulation）**：
+   ```text
+   (Continuous persistent volumetric smoke simulation, unbroken fluid aerosol continuity):
+   dense pungent yellow-white smoke erupts upward and steadily billows without interruption
+   across the entire 9 seconds. The smoke density accumulates smoothly and monotonically,
+   spreading realistic thick atmospheric fog across the frame, never dissipating, never vanishing,
+   with zero sudden drops in opacity.
+   ```
+3. **负向全封锁烟雾跳变与跳切词（Negative Temporal Fluid Locks）**：
+   ```text
+   smoke disappearing, sudden smoke dissipation, flashing smoke, intermittent smoke,
+   smoke popping in and out, clear air gap, abrupt jump cut, scene switch, flickering smoke
+   ```
+- **实战成效**：重拍后的 SC7 镜头从 0 秒到 9 秒烟雾如巨浪般从铁锅平滑且不可逆地向外弥漫翻滚，刘中原与王一鸣在连贯浓烟中逼真呛咳挥铲，整段灾难性喜剧效果一气呵成，彻底根除了“烟雾凭空消失再闪现”的断裂感！
+
