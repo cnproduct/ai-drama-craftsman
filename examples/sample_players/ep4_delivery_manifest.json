@@ -1,0 +1,136 @@
+{
+  "series": "少年变形记",
+  "episode": 4,
+  "title": "溪流渔猎与泥塘大作战",
+  "totalShots": 10,
+  "aspectRatio": "9:16",
+  "productionSpecs": {
+    "model": "Seedance 2.0 fast (star-video2-fast)",
+    "visualProtocol": "Visual English Zero-Subtitle Protocol",
+    "resolution": "496x864",
+    "shotDuration": "9.08s (Golden Single-Clock Window)",
+    "totalDurationSeconds": 90.8
+  },
+  "shots": [
+    {
+      "shotIndex": 1,
+      "shotId": "SC1",
+      "nodeId": "v-pzhUnPDwXT",
+      "title": "第4集_SC1_溪谷明媚与饥饿进军",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/9743a0adc7acea192ca9cc8c4d3a2ebc93d5fcef6ff867c773343796475c9e8f.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc01.mp4",
+      "sizeBytes": 4047057,
+      "sizeMB": "3.86 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 2,
+      "shotId": "SC2",
+      "nodeId": "v-EPoyMQNKqY",
+      "title": "第4集_SC2_一鸣涉水耍帅踩空滑跌",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/d4fbb5a853dc6f99d0a0a3e3e9fad1375edda9b2b5d987ff2b3b1b09be301095.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc02.mp4",
+      "sizeBytes": 3714196,
+      "sizeMB": "3.54 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 3,
+      "shotId": "SC3",
+      "nodeId": "v-Jcz2aUbDZo",
+      "title": "第4集_SC3_小婉巧手编柳条小鱼篓",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/0c544e9ca9fa29c9481fd611f9f1c922ff31b9bb64d1c384e9b94f841a8e3889.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc03.mp4",
+      "sizeBytes": 2858054,
+      "sizeMB": "2.73 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 4,
+      "shotId": "SC4",
+      "nodeId": "v-yfa2S0MsnC",
+      "title": "第4集_SC4_铁柱狂野式徒手抓鱼抽脸",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/51782b300ca4843c1adf7ca99e332fd27f63a3613fe6ccc35b582ad8a99392e7.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc04.mp4",
+      "sizeBytes": 3428711,
+      "sizeMB": "3.27 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 5,
+      "shotId": "SC5",
+      "nodeId": "v-v5M0ipTlew",
+      "title": "第4集_SC5_中原追赶肥鸭误入烂泥塘",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/13e4082ba663be2af9b1eae21321441e9e2a61caccee8dd4e86679b3bf40c659.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc05.mp4",
+      "sizeBytes": 4173018,
+      "sizeMB": "3.98 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 6,
+      "shotId": "SC6",
+      "nodeId": "v-EcNuBG68Ob",
+      "title": "第4集_SC6_鸭尾掀泥糊脸与深陷泥潭",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/56a95f7b41251666272ee61cf519fb0db1b55df30720ca1a90c6e4981d459cfc.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc06.mp4",
+      "sizeBytes": 2548936,
+      "sizeMB": "2.43 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 7,
+      "shotId": "SC7",
+      "nodeId": "v-swGFHhEUUT",
+      "title": "第4集_SC7_铁柱神力拔萝卜救中原",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/a9a970d62c1379cf01c9f352813e31cb3967efcbd7e2988936c23ea65f773bf6.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc07.mp4",
+      "sizeBytes": 2830042,
+      "sizeMB": "2.70 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 8,
+      "shotId": "SC8",
+      "nodeId": "v-FgJVrSw7Cr",
+      "title": "第4集_SC8_一鸣自拍直播泥塘反转大火",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/9247e262ae38558a4fc7d4c25d5c3b2edd449f5f020df6dafead5db06ec8857b.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc08.mp4",
+      "sizeBytes": 2807042,
+      "sizeMB": "2.68 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 9,
+      "shotId": "SC9",
+      "nodeId": "v-kYToLPEb25",
+      "title": "第4集_SC9_李大娘小院的丰收犒劳",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/47f9a1e5111f71d6f4c5d605dc7005d27223afd91380fcc1218dfa215974c346.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc09.mp4",
+      "sizeBytes": 3117252,
+      "sizeMB": "2.97 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    },
+    {
+      "shotIndex": 10,
+      "shotId": "SC10",
+      "nodeId": "v-2Qieengv24",
+      "title": "第4集_SC10_五人开怀大嚼与温情定格",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/b35639b2f538c32d60aa642da950e9b9ad77bc69d5b49f74887902747abc10a8.mp4",
+      "localPath": "d:\\短剧\\output_videos\\ep4\\ep4_sc10.mp4",
+      "sizeBytes": 2783594,
+      "sizeMB": "2.65 MB",
+      "resolution": "496x864",
+      "duration": 9.08
+    }
+  ]
+}
