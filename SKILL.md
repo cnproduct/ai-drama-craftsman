@@ -71,6 +71,11 @@ flowchart TD
 | **果园长出红苹果** | 泛化词“果园”触发模型训练集高频先验偏见 | **正向物种锁死** + **竞争物种负向全面拉黑** | [避坑指南 3.3](./references/troubleshooting-guide.md#避坑-3关键农产品道具物种混淆红苹果误现脐橙果园) |
 | **视频直链 404** | 读取了历史重试任务的废弃哈希快照 | **实时数据流穿透溯源** + **自动化 HEAD 探针** | [避坑指南 4.3](./references/troubleshooting-guide.md#避坑-4视频直链-404-失效与-osscdn-哈希漂移) |
 | **远端节点找不到** | React Flow 开启了视口虚拟化 (Unmount) | **React Fiber 内存穿透** 读取 `nodes` 并调用 `setCenter` | [避坑指南 5.3](./references/troubleshooting-guide.md#避坑-5react-flow-画布远距虚拟化节点-dom-销毁-unmount) |
+| **具象短语误出字幕** | 正向中文具象短语触发字符生成头先验拓印 | **全英文视觉语法协议 (Visual English)** + **汉字全封锁** | [避坑指南 9.3](./references/troubleshooting-guide.md#避坑-9冷门具象中文短语触发汉字字符拓印以薅断老茶枝误出薅断老茶杵为例) |
+| **14s 视频第 7 秒倒退** | 14s 双时序去噪窗口拼接处因果注意力回弹 | **单向时间流约束** + **黄金 9 秒单时钟窗口原则** | [避坑指南 10.3](./references/troubleshooting-guide.md#避坑-10超长视频-14s-滑动时序窗口拼接断层导致动作反向倒退) |
+| **全景构图面部模糊** | 全景画面人物占比过低，8倍下采样丢失五官 Token | **中景跟推进阶** + **面部高清特化 Token 注入** | [避坑指南 11.3](./references/troubleshooting-guide.md#避坑-11全景构图面部像素稀释导致人物五官模糊) |
+| **跑步失重与摔跤怪异** | 缺乏牛顿力学地面反作用力与摔跤生理缓冲因果链 | **生物力学动力学协议** + **4阶段跌倒缓冲生理时序链** | [避坑指南 12.3](./references/troubleshooting-guide.md#避坑-12ai-奔跑运动失重滑步与摔跤动作违背人体生物力学的动力学解法) |
+
 
 ---
 

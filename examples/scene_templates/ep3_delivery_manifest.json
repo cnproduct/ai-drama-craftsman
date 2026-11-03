@@ -3,9 +3,9 @@
   "episode": 3,
   "title": "茶山风云与灶火惊魂",
   "totalShots": 10,
-  "totalDurationSeconds": 97,
-  "totalDurationFormatted": "1分37秒",
-  "status": "100% 验收通过",
+  "totalDurationSeconds": 91,
+  "totalDurationFormatted": "1分31秒",
+  "status": "100% 验收通过 (全 10 镜头零字幕 + 高清面部 + 人体生物力学完美版)",
   "shots": [
     {
       "shotId": "SC1",
@@ -100,12 +100,12 @@
     {
       "shotId": "SC10",
       "title": "哄抢神茶与小院爆笑定格",
-      "nodeId": "v-ejcPTWVYP4",
-      "duration": "14.08s",
+      "nodeId": "v-eKUUXoQlho",
+      "duration": "9.08s",
       "ratio": "9:16 (496x864)",
-      "sizeMB": "5.34 MB",
-      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/867dfd84d4b67a51db50221a1af2205f954469dba5679d3ee4f9629198e0e373.mp4",
-      "highlight": "阿福抱竹筒狂奔狂笑，三人花脸张嘴疯狂追逐扑抢，小婉笑弯腰，公鸡飞舞，定格"
+      "sizeMB": "3.31 MB",
+      "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/92ce9e29ac4937d54340d3602a6df36ad4798f855ec111681d41a934572c229a.mp4",
+      "highlight": "【人体生物力学与物理重拍版】强化地面反作用力与足底压实蹬地，第3秒跌倒严格遵循人体保护缓冲反射（双臂撑地+向前滑行缓冲+沙土爆散），彻底根除失重与爬行动作！"
     }
   ]
 }
