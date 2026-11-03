@@ -230,7 +230,20 @@ reactFlowInstance.onNodesChange([{
    ```text
    Chinese characters, Chinese text, hanzi, words on screen, dialogue text, white subtitles, subtitles, text, words, watermark, caption, typography
    ```
-- **实战效果**：实测替换后生成的全新 SC3 视频（直链 `5c7f299b21bae2e0be655ca09a2e51c70ff908e9d52485edff15a4b65b522af7.mp4`）第 2 秒乃至全片 9 秒，每一帧 100% 纯净无字，且阿福手持断枝张嘴狂吼动作神态生动至极！
+
+### 9.4 衍生陷阱防范：中文角色名触发胸口「假姓名牌/水牌」与服装纯色锁死规范
+- **故障现场**：在去字幕重拍过程中，由于正向或上下文提到了角色中文名“陈阿福”，模型虽抑制了画面底部字幕，却在第 0~2 秒将文字“陈阿福”以印花或工牌形式烙印在角色胸口衣服上，形成假水牌。
+- **根因剖析**：扩散模型注意力机制在强行压抑底部 Subtitle 显式通道时，潜空间的 Glyph 冲动会寻找替代几何表面（如角色胸前大面积纯色布料）进行“假名牌泄露（Name Tag Leakage）”。
+- **工业级终极防范规范**：
+  1. **正向服装纯色无印花锁死（Plain Fabric Anti-Print Lock）**：
+     ```text
+     wearing simple solid unprinted plain olive green cotton work shirt, completely plain untextured smooth fabric without any letters, text, badges, or name tags
+     ```
+  2. **负向词库全方位封锁名牌与角色名汉字**：
+     ```text
+     name tag, character name, lower third, name label, text on clothes, printed words, logo, chest badge, 陈阿福
+     ```
+- **实战成效**：重拍后的 SC3 终极纯净版（节点 `v-an7x0zcaNz`，视频直链 `1d02fe3ed85de2bcef5c171cbaff2ce1fb39fc7d1ac84b81745f23e40ec335ee.mp4`）完美忠实还原阿福单人半身中特写手捏嫩绿茶枝仰天痛斥的经典镜头，0.8s、1.5s、3.0s、5.0s、7.0s 全时段 100% 零底部字幕、零胸口姓名牌，成片质感通透无暇！
 
 ---
 
