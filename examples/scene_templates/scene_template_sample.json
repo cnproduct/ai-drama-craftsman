@@ -1,0 +1,24 @@
+{
+  "seriesTitle": "爆笑变形记",
+  "sceneIndex": 2,
+  "sceneName": "投奔发小：阿福豪言安排与秘密密谋",
+  "resolution": "9:16 (480x854 / 496x864)",
+  "standardDurationSeconds": 9,
+  "negativePrompt": "subtitles, subtitle bar, text, words, watermark, caption, typography, Chinese characters, black bar at bottom, banner, title, font, letters, credits, UI, interface, logo, static mouth, closed lips talking",
+  "shots": [
+    {
+      "section": 1,
+      "nodeId": "v-sec2-1",
+      "title": "林天豪拖行李箱迈入阿福豪宅大厅",
+      "duration": 9,
+      "prompt": "(Dynamic tracking medium shot), Lin Tianhao dragging heavy metallic luggage walking into luxury modern villa hall, exhausted posture, looking around with tentative hope, (lips slightly parted talking in tired breath), natural indoor daylight, cinematic HDR, 9:16 vertical frame"
+    },
+    {
+      "section": 6,
+      "nodeId": "v-YSSg5bmNsd",
+      "title": "阿福拍胸脯保证安排_零字幕张嘴口型重拍版",
+      "duration": 9,
+      "prompt": "(Medium close-up tracking shot), loyal butler Ah-Fu in casual vest standing in lavish room, beating his chest with right fist making a solemn guarantee, face filled with enthusiasm and comical earnestness. (Mouth wide open talking enthusiastically, moving jaw with vivid animated facial expressions and lively speech gestures), nodding repeatedly, natural warm cinematic interior light, masterpiece, photorealistic, 9:16 vertical frame"
+    }
+  ]
+}
