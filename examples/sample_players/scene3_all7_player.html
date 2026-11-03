@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《爆笑变形记》场次三 全7节（破屋夜宿·装神弄鬼整蛊篇）高清连续播放器</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0b0f19;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px;
+    }
+    .header {
+      text-align: center;
+      max-width: 960px;
+      margin-bottom: 20px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a855f7, #ec4899, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      max-width: 1100px;
+      width: 100%;
+      background: #131b2e;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    @media (max-width: 860px) {
+      .main-container { flex-direction: column; align-items: center; }
+    }
+    .video-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 380px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 360px;
+      height: 640px;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      border: 2px solid #334155;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .controls-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      width: 100%;
+      justify-content: center;
+    }
+    button.ctl-btn {
+      background: #7c3aed;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button.ctl-btn:hover {
+      background: #6d28d9;
+      transform: translateY(-1px);
+    }
+    .playlist {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .playlist-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 10px;
+    }
+    .item-card {
+      display: flex;
+      gap: 14px;
+      padding: 12px 14px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-card:hover {
+      background: #273549;
+      border-color: #475569;
+    }
+    .item-card.active {
+      background: rgba(124, 58, 237, 0.2);
+      border-color: #8b5cf6;
+    }
+    .item-card.active .item-name {
+      color: #c084fc;
+    }
+    .item-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .item-card.active .item-num {
+      background: #8b5cf6;
+      color: #fff;
+    }
+    .item-info {
+      flex: 1;
+    }
+    .item-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 4px;
+    }
+    .item-desc {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .item-tags {
+      display: flex;
+      gap: 8px;
+      font-size: 11px;
+    }
+    .tag {
+      padding: 2px 6px;
+      background: #0f172a;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+    .tag-pure {
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+    }
+    .tag-sec {
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.1);
+    }
+    .spec-box {
+      margin-top: 14px;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .spec-box strong { color: #e2e8f8; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="badge">场次三全量大合集 · 第1节至第7节 · 100% 探活可用 · 连续自动播放</div>
+    <h1>《爆笑变形记》场次三：破屋夜宿·装神弄鬼整蛊篇（全7节）</h1>
+    <div class="subtitle">破屋蜷床 ➔ 白影掠过 ➔ 阿福学鬼叫 ➔ 吓成一团 ➔ 拖鞋破功抓现行 ➔ 倒水捶背一家人（总时长约100秒）</div>
+  </div>
+
+  <div class="main-container">
+    <div class="video-stage">
+      <div class="video-wrapper">
+        <video id="mainVideo" controls autoplay playsinline></video>
+      </div>
+      <div class="controls-row">
+        <button class="ctl-btn" id="prevBtn">⏮ 上一节</button>
+        <button class="ctl-btn" id="nextBtn">⏭ 下一节</button>
+        <button class="ctl-btn" id="loopBtn" style="background:#7c3aed;">连续播放: 开</button>
+      </div>
+    </div>
+
+    <div class="playlist">
+      <div class="playlist-title">
+        <span>场次三 镜头目录（共7节 / 100% 探活可用）</span>
+        <span id="playingIndex" style="color: #c084fc; font-size: 13px;">正在播放 第 1 / 7 节</span>
+      </div>
+      <div id="itemsContainer"></div>
+
+      <div class="spec-box">
+        <strong>剧情核心梗概：</strong><br>
+        四位城市主人公初入农村借宿昏暗破屋，木床吱呀难眠。阿福夜半披床单拉绳装鬼、学鬼幽幽怪叫，将赵铁柱、刘中原、苏小婉吓得抱成一团嗷嗷大叫。张一鸣抄拖鞋勇冲出门当场撕开床单抓包阿福！四人破涕为笑惩罚阿福端茶倒水、捶背赔罪，笑闹中五人真正破冰拉近距离。
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const videos = [
+  {
+    "section": 1,
+    "title": "第1节：夜里破屋油灯，四人蜷床难眠",
+    "duration": 14.08,
+    "durationSec": "14.08",
+    "resolution": "496x864",
+    "id": "v-wSueTbgeLf",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/ad8e08c972656efee62f138538cb1c54b1efc9b9f0b0cc38ef0ea92f9f19fe4a.mp4",
+    "desc": "破屋内油灯摇曳，四人蜷在吱呀作响的木床上，赵铁柱瑟瑟发抖，小婉想家，一鸣嘴硬强撑，中原翻身劝睡"
+  },
+  {
+    "section": 2,
+    "title": "第2节：门口沙沙声白影飘过，赵铁柱惊呼，张一鸣嘴硬",
+    "duration": 13,
+    "durationSec": "13.00",
+    "resolution": "496x864",
+    "id": "v-JTY9rR787W",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/ff75c15d60c9e5ff9bc2741507ff3747a368229f8bc343486344247155ca3127.mp4",
+    "desc": "门外阴风阵阵传来沙沙怪响，白影一晃而过，铁柱吓得扯被狂喊，一鸣梗着脖子嘴硬声称“二环爷们儿见多识广”"
+  },
+  {
+    "section": 3,
+    "title": "第3节：屋外阿福拉绳憋笑，压嗓学鬼叫",
+    "duration": 13,
+    "durationSec": "13.00",
+    "resolution": "496x864",
+    "id": "v-pAqScsHRE1",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/511ae9fbb41ed6e06d733399cf9cd508f119807d56d4215538fd4e4b0638b54d.mp4",
+    "desc": "窗外月光冷青，阿福披着白床单拉着细绳在墙角憋笑发抖，压低嗓音发出呜呜怪叫装神弄鬼"
+  },
+  {
+    "section": 4,
+    "title": "第4节：赵铁柱抱刘中原，刘中原也抖，苏小婉哭腔",
+    "duration": 15,
+    "durationSec": "15.00",
+    "resolution": "496x864",
+    "id": "v-VgN3yNxq6E",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/e2ccbfafee7769a6a263c7cd68037dfadbf0e798f0a37ec897ccce2cffe67b31.mp4",
+    "desc": "幽幽绿光扫过窗棱，赵铁柱魂飞魄散死死勒住刘中原，刘中原吓得直哆嗦，苏小婉带着哭腔紧捂双耳"
+  },
+  {
+    "section": 5,
+    "title": "第5节：张一鸣抄拖鞋冲出门，撞上阿福床单掉落",
+    "duration": 15,
+    "durationSec": "15.00",
+    "resolution": "496x864",
+    "id": "v-KazGX9nxwt",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/6cde3cee4240c94a1de4a59a0ba5bb7efdfd5a5813e3dab4a2f08f2a8bf03400.mp4",
+    "desc": "张一鸣热血上涌抄起拖鞋怒吼冲出门去，与扑来的白影撞个满怀，床单滑落——赫然是捂脸憋笑的陈阿福"
+  },
+  {
+    "section": 6,
+    "title": "第6节：四人齐喊阿福，阿福讪笑解释风俗",
+    "duration": 15.1,
+    "durationSec": "15.10",
+    "resolution": "496x864",
+    "id": "v-E8tR3OsWjp",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/a8b314cb80f04c812405574bf9f859aef5953873ea062aa804b0a407592c01b5.mp4",
+    "desc": "四人合围怒吼“陈阿福”，阿福讪笑着连连摆手，胡诌狡辩“这是咱们大山的迎新民俗，吓过就是一家人”"
+  },
+  {
+    "section": 7,
+    "title": "第7节：四人无奈笑作一团，罚阿福倒水捶背，张一鸣收尾",
+    "duration": 15.1,
+    "durationSec": "15.10",
+    "resolution": "496x864",
+    "id": "v-0o1Ilu5URR",
+    "url": "https://libtv-res.liblib.art/sd-gen-save-img/genius_playground/video/a2a811940e5f41c6a345b53b080aa78b/d7a6d3a19de972509f7c1ad272d16fcc7eacb52431b14ac2f7247f487e4110ee.mp4",
+    "desc": "破屋内破涕为笑，四人罚阿福端茶倒水、给铁柱卖力捶背赔罪，一鸣叉腰放狠话“走着瞧”，温情搞笑收场"
+  }
+];
+    let currentIndex = 0;
+    let autoNext = true;
+
+    const mainVideo = document.getElementById('mainVideo');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const loopBtn = document.getElementById('loopBtn');
+    const playingIndex = document.getElementById('playingIndex');
+    const itemsContainer = document.getElementById('itemsContainer');
+
+    function renderList() {
+      itemsContainer.innerHTML = '';
+      videos.forEach((v, idx) => {
+        const card = document.createElement('div');
+        card.className = 'item-card' + (idx === currentIndex ? ' active' : '');
+        card.onclick = () => switchVideo(idx);
+
+        card.innerHTML = `
+          <div class="item-num">${v.section}</div>
+          <div class="item-info">
+            <div class="item-name">${v.title}</div>
+            <div class="item-desc">${v.desc}</div>
+            <div class="item-tags">
+              <span class="tag tag-sec">${v.durationSec}s</span>
+              <span class="tag">${v.resolution}</span>
+              <span class="tag tag-pure">${v.id}</span>
+              <a href="${v.url}" target="_blank" onclick="event.stopPropagation()" style="color:#38bdf8; text-decoration:none; margin-left:auto; font-size:11px;">下载/直链 ↗</a>
+            </div>
+          </div>
+        `;
+        itemsContainer.appendChild(card);
+      });
+      playingIndex.textContent = `正在播放 第 ${currentIndex + 1} / ${videos.length} 节`;
+    }
+
+    function switchVideo(idx) {
+      if (idx < 0) idx = 0;
+      if (idx >= videos.length) idx = videos.length - 1;
+      currentIndex = idx;
+      mainVideo.src = videos[currentIndex].url;
+      mainVideo.play().catch(e => console.log('Autoplay prevented:', e));
+      renderList();
+    }
+
+    mainVideo.onended = () => {
+      if (autoNext) {
+        if (currentIndex < videos.length - 1) {
+          switchVideo(currentIndex + 1);
+        } else {
+          switchVideo(0);
+        }
+      }
+    };
+
+    prevBtn.onclick = () => switchVideo(currentIndex - 1);
+    nextBtn.onclick = () => switchVideo(currentIndex + 1);
+    loopBtn.onclick = () => {
+      autoNext = !autoNext;
+      loopBtn.textContent = `连续播放: ${autoNext ? '开' : '关'}`;
+      loopBtn.style.background = autoNext ? '#7c3aed' : '#475569';
+    };
+
+    // 初始化播放
+    switchVideo(0);
+  </script>
+</body>
+</html>
