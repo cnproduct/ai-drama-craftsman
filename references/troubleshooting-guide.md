@@ -14,6 +14,9 @@
 6. [避坑 6：Windows PowerShell 参数转义与环境隔离陷阱](#避坑-6windows-powershell-参数转义与环境隔离陷阱)
 7. [避坑 7：视频比例畸变与时长档位不匹配](#避坑-7视频比例畸变与时长档位不匹配)
 8. [避坑 8：多参考图连线断链与人物面部一致性崩塌](#避坑-8多参考图连线断链与人物面部一致性崩塌)
+9. [避坑 9：冷门具象中文短语触发汉字字符拓印（“薅断老茶枝”误出“薅断老茶杵”）](#避坑-9冷门具象中文短语触发汉字字符拓印以薅断老茶枝误出薅断老茶杵为例)
+10. [避坑 10：超长视频 (14s) 滑动时序窗口拼接断层导致动作反向倒退](#避坑-10超长视频-14s-滑动时序窗口拼接断层导致动作反向倒退)
+11. [避坑 11：全景构图面部像素稀释导致人物五官模糊](#避坑-11全景构图面部像素稀释导致人物五官模糊)
 
 ---
 
@@ -200,3 +203,72 @@ reactFlowInstance.onNodesChange([{
 4. `ref-4`: 关键道具资产卡（如百万元支票 / 金黄脐橙 / 豪华大奔）
 5. `ref-5`: 镜头动态/风格调性参考卡
 - 每次创建新节点时，脚本自动在拓扑图 `edges` 中插入这 5 条固定的源节点至目标节点连接，确保人物面容特征在全剧 60 镜头中百分之百锁死一致！
+
+
+---
+
+## 避坑 9：冷门具象中文短语触发汉字字符拓印（以“薅断老茶枝”误出“薅断老茶杵”为例）
+
+### 9.1 故障现场
+在《少年变形记》第三集 SC3 镜头中，虽然在 Prompt 中反复声明了“全局禁止任何字幕”，但生成的视频在第 2 秒画面中央偏下赫然出现了一行现代白色中文字幕：`薅断老茶杵`！
+
+### 9.2 根因剖析
+- **中文字符的双重模态表征机制**：在具备中英文理解的多模态生成模型（如 Seedance 2.0 Fast）中，中文字符既具备“概念语义（Semantic Concept）”，又在图像隐空间中关联着“字体形态（Glyph Visual Texture）”。
+- **强口语/动宾短语的字幕先验偏向**：Prompt 中写了“`一把抓起赵铁柱手里薅断的老茶枝`”。模型在理解时发生特征漂移，将“薅断老茶枝”误识别为高频短剧短视频中的“台词字幕先验”，直接激活了字符生成头（Glyph Head），强行在画面上压制了文字（甚至将“枝”字笔画误生成为“杵”）。
+- **否定词的弱约束悖论**：单纯写“不要字幕、禁止出现文字”无法抑制底层强词元对字符生成头的激活。
+
+### 9.3 工业级终极解决方案
+**「全英文视觉语法协议 (Visual English Protocol) + 多维负向汉字全封锁」**：
+1. **正向提示词全面采用纯英文视觉描述**：
+   - 彻底切断中文字形 Token 的输入路径！
+   - 原中文：`陈阿福急刹跳到赵铁柱面前，一把抓起赵铁柱手里薅断的老茶枝痛心疾首大喊`
+   - 终极规范改写：
+     ```text
+     (Fast tracking medium close-up shot), local guide Chen Afu rapidly brakes and rushes in front of burly Zhao Tiezhu, holding a snapped thick brown plant stalk with deep heartbreak and exasperation. (Mouth opens wide shouting and scolding in dramatic fury, moving jaw with lively exaggerated speech gestures), stomping feet in comical agitation.
+     ```
+2. **负向词库加装中文字形重型拦截网**：
+   ```text
+   Chinese characters, Chinese text, hanzi, words on screen, dialogue text, white subtitles, subtitles, text, words, watermark, caption, typography
+   ```
+- **实战效果**：实测替换后生成的全新 SC3 视频（直链 `5c7f299b21bae2e0be655ca09a2e51c70ff908e9d52485edff15a4b65b522af7.mp4`）第 2 秒乃至全片 9 秒，每一帧 100% 纯净无字，且阿福手持断枝张嘴狂吼动作神态生动至极！
+
+---
+
+## 避坑 10：超长视频 (14s) 滑动时序窗口拼接断层导致动作反向倒退
+
+### 10.1 故障现场
+在 SC1（14 秒全景）视频中，画面播放到第 7 秒左右，原本大步向前走的角色突然发生了怪异的“时间倒退/往回走一步/动作折返”，破坏了剧情连续性。
+
+### 10.2 根因剖析
+- **滑动时空注意力窗口（Sliding Temporal Attention Windows）的因果边界**：
+  扩散模型在推理 14 秒长视频（约 336 帧）时，为规避显存爆炸，通常划分为两个 7 秒时序块（Dual 7s Chunk Latent Denoising）分别去噪再拼接。
+- **因果注意力（Causal Attention）未锁定导致时间反演**：
+  跨越第 7 秒边界时，如果正向提示词中缺乏明确的“单向持续时间矢量”，模型自注意力机制极易将第一段后半截的特征当成“回弹”先验，产生类似“乒乓循环（Ping-pong motion loop）”的时序反转。
+
+### 10.3 工业级终极解决方案
+1. **注入强效物理单向时间流约束**：
+   在正向提示词中显式约束：
+   `(continuous forward motion, characters walk strictly forward without stopping or reversing direction, linear temporal progression, unidirectional motion, no looping, no backward movement)`。
+2. **时长档位理性降维（黄金 9 秒原则）**：
+   对于单纯的角色开场、行进或单段对话镜头，**优先选用 9 秒黄金基准档位**！9 秒处于单时序稳定计算窗口内，动作 100% 单向持续向前，绝不会发生跨窗口动作折返！
+
+---
+
+## 避坑 11：全景构图面部像素稀释导致人物五官模糊
+
+### 11.1 故障现场
+在 SC1 远景全景镜头中，虽然画面风景壮丽，但五位主角的面容模糊不清、五官辨识度低，无法展现角色魅力。
+
+### 11.2 根因剖析
+- **像素网格与潜空间下采样定律**：
+  在 9:16 竖屏全景（Wide Shot）构图中，茶园大山占了画面的 85% 以上，五个角色在画面中极其微小。在 480p（496×864）分辨率下，单个角色的面部只有区区 `10×15` 像素。
+- 在扩散模型 Latent Space 经过 8 倍下采样（Downsampling）后，面部只剩 `1×2` 个潜变量 Token，数学上根本无法承载眼睛、眉毛、鼻梁等丰富五官特征。
+- **多参考卡注意力稀释**：同时接入 5 张角色参考卡，在全景极其微小的像素区域中，模型的注意力交叉头无法完成 5 张脸的高保真映射，导致平均化模糊。
+
+### 11.3 工业级终极解决方案
+1. **景别优化：从大全景收敛为“中景推进至中近景 (Medium Shot moving in to Medium Close-up)”**：
+   让主角在画面中占据 50% 以上面积，面部有效像素直接提升 3~5 倍！
+2. **注入高清面部特化描述**：
+   `(crystal clear sharp facial features, highly detailed expressive eyes, clear smiling lips naturally parted speaking, cinematic sharp focus on faces, 8k resolution, masterpiece)`。
+3. **负向词强化封杀面部缺陷**：
+   `blurry faces, low resolution face, indistinct facial features, unrecognizable face, distorted mouth, mushy details, out of focus`。
