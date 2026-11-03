@@ -515,6 +515,26 @@ reactFlowInstance.onNodesChange([{
      ```
 - **实战成效**：重拍后的 EP4-SC01 半身微表情特化版（节点 `v-GvtzpNJAjD`）不仅严格继承了 4 秒前后的服饰与色彩一致性，而且每位少年的眼角笑意、牙齿细节、哈欠与肌肉动态活灵活现，电影级质感大幅跃升！
 
+### 16.5 工业级避坑：动态微表情时序闭环与4秒潜空间分块平滑缝合规范
+- **故障现场**：
+  1. **极限离散动作引发的“大嘴冻结黑洞”**：当提示词使用过于极端的瞬态动作词（如 `yawning comically with mouth wide open` 或过度激进的 `AU27 open yawn`）时，视频扩散模型在无骨骼驱动时序自回归下，无法自发补全“张嘴吸气 -> 闭嘴复位”的生理动作环，而是将张大嘴视为角色的静态固有外貌，导致人物在全片 9 秒内全程张大嘴甚至呈现非人的黑色口腔空洞，神态极其不自然。
+  2. **4 秒时序潜空间交界处的“突兀换人与角色湮灭”**：9:16 竖屏在 4.0~4.5 秒（第一时序注意块与第二时序注意块的交界处），若前排景别过于逼近边缘（如纯半身或胸部特写）且运动幅度过大，模型在生成后半程时注意力会产生主体漂移，将后排人物误认为主体拉至前景，导致前排主角（如陈阿福）在第 4 秒瞬间湮灭消失，被后排人物（如赵铁柱）突然顶替换脸。
+- **工业级终极解决方案（Natural Demeanor & Smooth Temporal Continuity Protocol）**：
+  1. **以“生理稳态微表情”替代“极端离散动作词”**：
+     - 摒弃 `mouth wide open`，改为生理稳态动效词：`sleepy eyelids blinking naturally, lips comfortably closed in a slight weary pout, head nodding slightly in comic tiredness, handsome adolescent face looking naturally tired yet composed, completely natural relaxed human facial expression without gaping or distortion`。
+     - 明确约束角色在无台词间歇时“嘴唇舒适闭合、自然微动”，确保面部自然松弛。
+  2. **中景透视余量法则（American / Knee-to-Waist Framing Margin）**：
+     - 在 5 人群像行进时，采用膝部至腰部以上的三分之二中景（American tracking shot），既将面部 Token 密度放大 2~3 倍确保清晰度，又保留足够的空间纵深，防止前排人物在行进中走出画幅触发潜空间角色顶替。
+  3. **4秒前后强力时序缝合与负向黑洞词库**：
+     ```text
+     gaping open mouth, wide open screaming mouth, black hole mouth, mouth stuck open,
+     frozen yawn, distorted open jaw, mouth hole, mannequin expression, robotic face,
+     frozen facial muscles, distorted teeth, plastic skin, character switching,
+     character morphing, character disappearing, 4 second glitch, mid-shot costume change,
+     disappearance at 4 seconds, temporal discontinuity, jump cut
+     ```
+- **实战成效**：EP4-SC01 自然神态与 4 秒高度一致连贯特化版（节点 `v-vpYh5nUCVg`）实现了王一鸣自然疲倦眨眼与微抿嘴唇、陈阿福温和爽朗领路含笑、赵铁柱憨厚摸肚想开饭的鲜活少年感；4 秒潜空间过渡平滑无缝，无任何大嘴黑洞、无任何角色换脸或消失！
+
 
 ---
 
