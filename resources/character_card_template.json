@@ -1,0 +1,41 @@
+{
+  "projectSpaceId": "13758103",
+  "projectId": "543252f229ea4cad876948bca6396016",
+  "standardAssetCards": [
+    {
+      "handle": "ref-1",
+      "type": "character",
+      "name": "主角1资产卡 (林天豪)",
+      "lockFeatures": ["25岁豪门少爷面部特征", "修身黑西装/落魄工装双形态", "短发纹理"],
+      "pinnedNodeId": "img-lin-character"
+    },
+    {
+      "handle": "ref-2",
+      "type": "character",
+      "name": "主角2资产卡 (阿福)",
+      "lockFeatures": ["忠诚微胖管家面容", "马甲衬衫配饰", "喜剧滑稽神态"],
+      "pinnedNodeId": "img-afu-character"
+    },
+    {
+      "handle": "ref-3",
+      "type": "scene",
+      "name": "场景环境资产卡",
+      "lockFeatures": ["豪门现代大厅 / 泥泞乡村田埂 / 阳光果园山坡"],
+      "pinnedNodeId": "img-scene-env"
+    },
+    {
+      "handle": "ref-4",
+      "type": "prop",
+      "name": "关键道具资产卡",
+      "lockFeatures": ["百亿黑卡 / 破旧老农拖拉机 / 金黄赣南脐橙"],
+      "pinnedNodeId": "img-key-props"
+    },
+    {
+      "handle": "ref-5",
+      "type": "style",
+      "name": "电影级调性资产卡",
+      "lockFeatures": ["电影感高动态胶片调色", "微手持纪实动态"],
+      "pinnedNodeId": "img-style-preset"
+    }
+  ]
+}

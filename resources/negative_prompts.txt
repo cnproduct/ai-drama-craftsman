@@ -1,0 +1,4 @@
+# 工业级去字幕与反面瘫标准负向词库 (Negative Prompts Preset)
+# 适用模型：Seedance 2.0 fast / Seedance 2.5 / Kling / Runway Gen-3
+
+subtitles, subtitle bar, text, words, watermark, caption, typography, Chinese characters, black bar at bottom, banner, title, font, letters, credits, UI, interface, logo, signature, static mouth, closed lips talking, motionless jaw, rigid face, bad anatomy, deformed limbs, blurry, lowres, distorted faces

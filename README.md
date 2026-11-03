@@ -51,51 +51,37 @@ ai-drama-craftsman/
 │   ├── libtv-reactflow-internals.md  # 《LibTV 画布 React Flow 底层机制与虚拟化穿透指南》
 │   └── full-drama-blueprint.md       # 《爆笑变形记》全剧 7 场 60 镜头实战档案
 ├── scripts/                          # 核心自动化工具箱（纯 ESM 规范）
+│   ├── cli.mjs                       # 统一命令行入口工具 (verify / player / prompt)
 │   ├── canvas_controller.mjs         # 画布节点创建、连线与参数注入控制器
 │   ├── poll_task_monitor.mjs         # 自动化异步长任务状态机智能轮询
 │   ├── verify_media_metadata.mjs     # 视频直链真伪校验与元数据探针
 │   └── build_series_player.mjs       # 短剧多镜头连续连播播放器生成引擎
+├── resources/                        # 预设资产与工程模板
+│   ├── negative_prompts.txt          # 工业级去字幕与反面瘫标准负向词库
+│   ├── shot_types.json               # 4s/9s/14s 标准微短剧镜头与景别预设
+│   └── character_card_template.json  # 5卡全要素资产连线与锁定模板
 └── examples/                         # 范例资产与模板
     ├── scene_templates/              # 工业化分镜 JSON 配置模板
-    └── sample_players/               # 样例播放器产物
+    └── sample_players/               # 样例播放器产物 (demo_player.html)
 ```
 
 ---
 
 ## 🛠️ 快速上手 (Quick Start)
 
-### 1. 安装与准备
+### 1. 验证视频直链有效性 (HEAD 二进制探活)
 ```bash
-git clone https://github.com/cnproduct/libtv-ai-drama-generator.git
-cd libtv-ai-drama-generator
+node scripts/cli.mjs verify "https://libtv-res.liblib.art/.../final.mp4"
 ```
 
-### 2. 生成符合工业级无字幕与口型标准的节点参数
-```javascript
-import { buildStandardVideoNode } from './scripts/canvas_controller.mjs';
-
-const node = buildStandardVideoNode({
-  id: 'v-demo-01',
-  title: '第1节：主角震惊',
-  prompt: '林天豪满脸错愕，猛然转头',
-  speakingAction: true,               // 自动注入张嘴口型
-  objectExclusions: ['apple', 'cars'],// 道具/物种排他性过滤
-  duration: 9
-});
+### 2. 将文学台词转化为“零字幕+张嘴口型”专业提示词
+```bash
+node scripts/cli.mjs prompt "阿福拍胸口保证一定给少爷安排最舒服的豪宅"
 ```
 
-### 3. 一键生成独立连播 HTML 播放器
-```javascript
-import { generateDramaPlayer } from './scripts/build_series_player.mjs';
-
-generateDramaPlayer({
-  title: '爆笑变形记 - 第一场',
-  videos: [
-    { id: 'v-1', title: '逐出家门', duration: '9s', url: 'https://.../1.mp4' },
-    { id: 'v-2', title: '黑卡冻结', duration: '9s', url: 'https://.../2.mp4' }
-  ],
-  outputPath: './output_player.html'
-});
+### 3. 一键根据分镜 JSON 模板生成连播 HTML 播放器
+```bash
+node scripts/cli.mjs player examples/scene_templates/scene_template_sample.json output.html
 ```
 
 ---

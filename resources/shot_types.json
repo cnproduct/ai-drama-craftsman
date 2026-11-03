@@ -1,0 +1,26 @@
+{
+  "durations": {
+    "4s": {
+      "name": "极速反应镜 (Flash Reaction Shot)",
+      "idealFor": "震惊特写、摔倒瞬间、拍桌而起、车门关闭、眼神骤变",
+      "pacing": "快节奏切入，单点爆发"
+    },
+    "9s": {
+      "name": "核心叙事镜 (Standard Drama Shot)",
+      "idealFor": "1~2句戏剧台词对白、情绪反转、中距离肢体冲突、秘密密谋",
+      "pacing": "微短剧主力基准镜头"
+    },
+    "14s": {
+      "name": "戏剧长镜头 (Epic Sequence Shot)",
+      "idealFor": "全景环境推进、多角色连续走位互动、长对白辩驳、全村丰收狂欢",
+      "pacing": "大场景宏大叙事与高潮铺垫"
+    }
+  },
+  "aspectRatios": {
+    "vertical": {
+      "ratio": "9:16",
+      "baseResolutions": ["480x854", "496x864", "720x1280", "1080x1920"],
+      "compositionRule": "主角面部置于上半部1/3至1/2黄金分割区，预留顶部与底部安全边距"
+    }
+  }
+}
